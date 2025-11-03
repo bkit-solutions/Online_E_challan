@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <title>Remedic - Free Bootstrap 4 Template by Colorlib</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/open-iconic-bootstrap.min.css">
+    <link rel="stylesheet" href="../css/animate.css">
+    
+    <link rel="stylesheet" href="../css/owl.carousel.min.css">
+    <link rel="stylesheet" href="../css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="../css/magnific-popup.css">
+
+    <link rel="stylesheet" href="../css/aos.css">
+
+    <link rel="stylesheet" href="../css/ionicons.min.css">
+
+    <link rel="stylesheet" href="../css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="../css/jquery.timepicker.css">
+
+    
+    <link rel="stylesheet" href="../css/flaticon.css">
+    <link rel="stylesheet" href="../css/icomoon.css">
+    <link rel="stylesheet" href="../css/style.css">
+    
+    
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS (Optional) -->
+    <style>
+        .hero-section {
+            background: url('https://sc0.blr1.digitaloceanspaces.com/large/815799-40847-mehtvvlacy-1473166727.jpg') no-repeat center center;
+            background-size: cover;
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            
+      color: #fff;
+      padding: 80px 0;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+      text-align: center;
+        }
+
+        .section-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .feature-card {
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-card:hover {
+            transform: scale(1.05);
+            transition: 0.3s ease;
+        }
+
+        .footer {
+            background-color: #f8f9fa;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer p {
+            margin: 0;
+        }
+    </style>
+    
+  </head>
+  <body>
+
+  
+  
+  
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow">
+    <div class="container">
+        <a class="navbar-brand fw-bold text-warning" th:href="@{/user/index}">
+            🚓 Traffic Challan Portal
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active"   th:text="${name}">Home</a>
+                </li>
+               
+              
+                <li class="nav-item ">
+            <form  th:action="@{/logout}"  method="POST">
+					
+	
+			<button type="submit"  class="btn btn-danger" >Logout</button>   
+			</form>
+			</li>
+            </ul>
+        </div>
+    </div>
+</nav>
+  
+
+
+
+
+  <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="text-warning">Welcome to the Traffic Challan Portal</h1>
+            <p text-warning>Your one-stop platform for managing and paying traffic fines</p>
+            <a th:href="@{/user/view-challan}" class="btn btn-primary btn-lg">View Challans</a>
+            <a th:href="@{/user/pay-challan}" class="btn btn-secondary btn-lg ml-3">Pay Challan</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+     <!-- Main Content -->
+  <div class="main-content">
+    <div class="container-fluid">
+     
+
+
+      <!-- Challan Table -->
+      <div class="card mt-5">
+        <div class="card-header bg-secondary text-white">
+          My Challans
+        </div>
+        <div class="card-body table-responsive">
+         <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th>ID</th>
+                <th>Vehicle Number</th>
+                <th>Violation</th>
+                <th>Date</th>
+                <th>Location</th>
+                <th>Fine Amount (₹)</th>
+               
+            </tr>
+        </thead>
+        <tbody>
+        <tr th:each="challan : ${challans}">
+            <td th:text="${challan.id}"></td>
+            <td th:text="${challan.vehicleNumber}"></td>
+            <td th:text="${challan.violationType}"></td>
+            <td th:text="${challan.violationDateTime}"></td>
+            <td th:text="${challan.location}"></td>
+            <td th:text="${challan.fineAmount}"></td>
+            
+        </tr>
+        </tbody>
+    </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+<footer class="bg-dark text-white pt-4 pb-3 mt-5">
+    <div class="container text-center text-md-start">
+        <div class="row">
+
+            <div class="col-md-4 mb-3">
+                <h4 class="text-warning" style="color: #004085;">🚓 Traffic Challan Portal</h4>
+                <p class="small">Your trusted platform for managing and paying traffic challans online.</p>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <h6 class="text-uppercase fw-bold">Quick Links</h6>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="text-white text-decoration-none">Home</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Pay Challan</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">My Challans</a></li>
+                    <li><a href="#" class="text-white text-decoration-none">Login</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <h6 class="text-uppercase fw-bold">Contact Us</h6>
+                <p class="small mb-1">Email: support@trafficchallan.gov.in</p>
+                <p class="small mb-1">Helpline: 1800-123-4567</p>
+                <p class="small">Working Hours: 9 AM – 6 PM</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="text-center pt-3 border-top border-secondary mt-3">
+        <p class="mb-0 small">&copy; 2025 Traffic Challan Portal. All Rights Reserved.</p>
+    </div>
+</footer>
+
+    
+  
+
+
+
+  <script src="../js/jquery.min.js"></script>
+  <script src="../js/jquery-migrate-3.0.1.min.js"></script>
+  <script src="../js/popper.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+  <script src="../js/jquery.easing.1.3.js"></script>
+  <script src="../js/jquery.waypoints.min.js"></script>
+  <script src="../js/jquery.stellar.min.js"></script>
+  <script src="../js/owl.carousel.min.js"></script>
+  <script src="../js/jquery.magnific-popup.min.js"></script>
+  <script src="../js/aos.js"></script>
+  <script src="../js/jquery.animateNumber.min.js"></script>
+  <script src="../js/bootstrap-datepicker.js"></script>
+  <script src="../js/jquery.timepicker.min.js"></script>
+  <script src="../js/scrollax.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="../js/google-map.js"></script>
+  <script src="../js/main.js"></script>
+    
+  </body>
+</html>
